@@ -124,7 +124,7 @@ The live status below is validated via `scripts/validate_repository.py`:
 
 | Domain / Topic | Basic | Intermediate | Advanced | Total Questions | Target Status |
 |---|---|---|---|---|---|
-| **Python** (`PY`) | 25/200 | 25/200 | 25/200 | **75/600** | In Progress :construction: |
+| **Python** (`PY`) | 50/200 | 50/200 | 50/200 | **150/600** | In Progress :construction: |
 | **FastAPI** (`FA`) | 0/200 | 0/200 | 0/200 | **0/600** | Planned :clipboard: |
 | **Django** (`DJ`) | 0/200 | 0/200 | 0/200 | **0/600** | Planned :clipboard: |
 | **Django REST Framework** (`DRF`) | 0/200 | 0/200 | 0/200 | **0/600** | Planned :clipboard: |
