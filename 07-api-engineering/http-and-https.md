@@ -50,7 +50,7 @@ flowchart TD
 
 ---
 
-### NET-INT-002: How does TLS 1.3 encrypt HTTPS and why is it faster than TLS 1.2?
+### HTTP-INT-002: How does TLS 1.3 encrypt HTTPS and why is it faster than TLS 1.2?
 
 **One-Line Answer:**  
 **TLS 1.3** reduces the cryptographic handshake from **2 Round-Trip Times (2-RTT)** down to **1-RTT** (and 0-RTT for resumed connections), while permanently deprecating legacy insecure ciphers (RSA key exchange, SHA-1, CBC mode).
