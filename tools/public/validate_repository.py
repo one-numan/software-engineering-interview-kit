@@ -34,7 +34,7 @@ MERMAID_BLOCK_PATTERN = re.compile(r"```mermaid\n(.*?)```", re.DOTALL)
 
 ALLOWED_MERMAID_TYPES = (
     "flowchart", "graph", "sequenceDiagram", "stateDiagram",
-    "stateDiagram-v2", "classDiagram", "erDiagram", "xychart-beta"
+    "stateDiagram-v2", "classDiagram", "erDiagram", "xychart-beta", "gitGraph"
 )
 
 
@@ -114,14 +114,22 @@ class RepoValidator:
             if not any(first_line.startswith(t) for t in ALLOWED_MERMAID_TYPES):
                 self.warnings.append(f"Unrecognized or unsupported Mermaid diagram type in {rel_path}: '{first_line}'")
 
-        # 2. Relative Markdown links check
-        for match in RELATIVE_LINK_PATTERN.finditer(content):
-            target = match.group(2).split("#")[0].strip()
-            if not target or target.startswith(("http://", "https://", "mailto:", "ftp:")):
+        # 2. Relative Markdown links check (strip code blocks first to avoid matching type annotations like Box[int](42))
+        content_for_links = CODE_BLOCK_PATTERN.sub("", content)
+        for match in RELATIVE_LINK_PATTERN.finditer(content_for_links):
+            raw_target = match.group(2).strip()
+            # Only consider genuine file paths / relative links
+            if not raw_target or raw_target.startswith(("http://", "https://", "mailto:", "ftp:")):
+                continue
+            # If target has spaces, newlines, colons, or quotes, it's a code snippet/bracket artifact, not a file link
+            if any(ch in raw_target for ch in (' ', '\n', '\r', ':', "'", '"', '(', ')')):
+                continue
+            target = raw_target.split("#")[0].strip()
+            if not target:
                 continue
             target_path = (file_path.parent / target).resolve()
             if not target_path.exists():
-                self.warnings.append(f"Broken relative link in {rel_path}: [{match.group(1)}]({match.group(2)}) -> missing target '{target}'")
+                self.warnings.append(f"Broken relative link in {rel_path}: [{match.group(1)}]({raw_target}) -> missing target '{target}'")
 
         # 3. Question IDs & Content structure audit
         matches = list(QUESTION_ID_PATTERN.finditer(content))
@@ -157,10 +165,16 @@ class RepoValidator:
                     line[4:] if line.startswith(">>> ") or line.startswith("... ") else line
                     for line in code_text.splitlines()
                 )
+                import textwrap
+                dedented_code = textwrap.dedent(clean_code)
                 try:
-                    ast.parse(clean_code)
+                    ast.parse(dedented_code)
                 except SyntaxError as e:
-                    self.warnings.append(f"Syntax warning in {rel_path} (line {e.lineno}): {e.msg}")
+                    # Ignore Python 3.11+ except* syntax if running on host Python 3.10
+                    if sys.version_info < (3, 11) and "except*" in dedented_code:
+                        pass
+                    else:
+                        self.warnings.append(f"Syntax warning in {rel_path} (line {e.lineno}): {e.msg}")
 
     def _print_statistics(self):
         print("\n" + "=" * 60)

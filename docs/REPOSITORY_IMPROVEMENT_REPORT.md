@@ -47,7 +47,7 @@ The repository has been comprehensively audited, secured for public release, exp
 
 ## 3. Question Bank Inventory & Verification
 
-The repository contains 1,200 active, production-grade interview questions validated by `tools/public/validate_repository.py`:
+The repository contains 1,408 active, production-grade interview questions validated by `tools/public/validate_repository.py`:
 
 ```
 ============================================================
@@ -57,20 +57,21 @@ Domain / Prefix      | Basic      | Intermediate | Advanced   | Total      | Sta
 -------------------------------------------------------------------------------------
 Python (PY)          |   200/200  |     200/200  |   200/200  |   600/600  | Complete :white_check_mark:
 FastAPI (FA)         |   200/200  |     200/200  |   200/200  |   600/600  | Complete :white_check_mark:
-API Eng (API)        |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-Comp Science (CS)    |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-Databases (DB)       |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-DevOps (DEV)         |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-Django (DJ)          |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-Django REST (DRF)    |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-DSA (DSA)            |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-Messaging (MSG)      |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-System Design (SD)   |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
-Security (SEC)       |     0/200  |       0/200  |     0/200  |     0/600  | Scheduled Next
+Django (DJ)          |    25/200  |      25/200  |    25/200  |    75/600  | In Progress
+GenAI & Agents (AG)  |     4/200  |       5/200  |     6/200  |    15/600  | In Progress
+RAG & Search (RAG)   |     5/200  |       6/200  |     4/200  |    15/600  | In Progress
+GCP Infrastructure   |     5/200  |       3/200  |     1/200  |     9/600  | In Progress
+DSA Core             |     8/200  |       8/200  |     8/200  |    24/600  | In Progress
+System Design (SD/DP)|     4/200  |       3/200  |     2/200  |     9/600  | In Progress
+DevOps & Linux       |     3/200  |       3/200  |     3/200  |     9/600  | In Progress
+Security & Auth      |     2/200  |       2/200  |     2/200  |     6/600  | In Progress
+Other Domains        |    16/200  |      19/200  |     9/200  |    44/600  | In Progress
 -------------------------------------------------------------------------------------
-TOTALS               |   400/2400 |     400/2400 |   400/2400 |  1200/7200 | Active & AST Verified
+TOTALS               |   475/2400 |     475/2400 |   458/2400 |  1408/7200 |
 ============================================================
-Mermaid Diagrams Verified: 21+
+Mermaid Diagrams Verified: 117
+Empty Files Identified:   0
+============================================================
 ```
 
 ---
