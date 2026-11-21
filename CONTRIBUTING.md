@@ -52,9 +52,7 @@ You can contribute in several ways:
 4. **Make changes**: Follow our formatting and quality guidelines.
 5. **Run the local validation tool**:
    ```bash
-   py scripts/validate_repository.py
-   # or
-   python scripts/validate_repository.py
+   python tools/public/validate_repository.py
    ```
 6. **Commit with semantic messages**:
    ```bash
@@ -66,7 +64,7 @@ You can contribute in several ways:
 
 ## Question Formatting Standards
 
-Every question added must adhere to our standardized structure. Consolidated markdown files must use consistent headers or `<details>` blocks.
+Every question added must adhere to our standardized structure. For detailed rules on typography, Mermaid diagrams, and Indian tech ecosystem scenarios, see our comprehensive [Documentation Standards](docs/DOCUMENTATION_STANDARDS.md). Consolidated markdown files must use consistent headers or `<details>` blocks.
 
 ### Standard Structure
 
@@ -112,8 +110,8 @@ Concrete production scenario where a backend engineer encounters or leverages th
 Strategic advice on how to structure the verbal response during a live interview.
 
 #### 9. Related Concepts
-- [Linked Topic 1](../path/to/file.md)
-- [Linked Topic 2](../path/to/file.md)
+- `[Python OOP](01-python/oop.md)`
+- `[FastAPI Routing](02-fastapi/routing-and-dependencies.md)`
 
 #### 10. References
 - [Official Documentation Title](https://docs.python.org/3/...)
@@ -162,7 +160,7 @@ Question IDs follow a strict format: `[TOPIC_CODE]-[LEVEL]-[NUMBER]`
 ## Pull Request Guidelines
 
 Before submitting your PR:
-- [ ] Run `python scripts/validate_repository.py` and confirm all tests pass.
+- [ ] Run `python tools/public/validate_repository.py` and confirm all tests pass.
 - [ ] Ensure all questions follow the 10-point standard format.
 - [ ] Ensure Question IDs are unique and sequential.
 - [ ] Ensure Markdown links resolve to real paths.

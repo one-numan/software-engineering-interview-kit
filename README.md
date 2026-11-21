@@ -15,6 +15,7 @@
   <br />
   <a href="#how-to-use-this-repository">How to Study</a> ·
   <a href="docs/interview-preparation-guide.md">Preparation Guide</a> ·
+  <a href="docs/DOCUMENTATION_STANDARDS.md">Documentation Standards</a> ·
   <a href="ROADMAP.md">Roadmap</a> ·
   <a href="CONTRIBUTING.md">Contribute</a>
 </p>
@@ -70,12 +71,13 @@ Most interview preparation platforms suffer from two extremes: they are either s
 
 ## Key Features
 
-- :dart: **Standardized 10-Point Answer Blueprint**: Every interview question is broken down into 10 structured sections—from quick one-line answers for phone screens to deep runtime mechanics and interviewer follow-up questions.
+- :dart: **Standardized 10-Point & 14-Point Answer Blueprint**: Every interview question is broken down into structured sections—from quick one-line answers for phone screens to deep runtime mechanics, failure modes, and interviewer follow-up questions.
 - :snake: **Python-First & Backend-Focused**: Deep coverage of Python 3.10+, FastAPI, Django, DRF, PostgreSQL, Redis, Celery, Docker, Linux, and Cloud Infrastructure.
-- :bar_chart: **Verifiable Integrity & Honest Metrics**: Automated CI validation scripts verify every single question, test every Python code block, validate links, and compute honest live statistics.
-- :bulb: **Real-World Scenarios & Production Case Studies**: Real questions asked by Tier-1 product companies, scale-ups, and MNCs (e.g., investigating 100% PostgreSQL CPU, mitigating slow Django queries, scaling FastAPI to 10k concurrent requests).
-- :triangular_ruler: **Complete End-to-End System Designs**: Detailed architectural blueprints for URL shorteners, distributed job queues, rate limiters, notification systems, and scalable REST APIs.
-- :pencil2: **Interactive Mock Interviews**: Simulated junior, mid-level, and senior interview dialogs with actionable grading rubrics.
+- :bar_chart: **Verifiable Integrity & Honest Metrics**: Standalone public validator (`tools/public/validate_repository.py`) audits Question ID uniqueness, AST Python syntax, Markdown links, and question statistics.
+- :india: **Dedicated Indian IT Market Scenarios**: Tailored architectures covering UPI payment webhooks (Razorpay/PhonePe), Swiggy/Zomato hyperlocal logistics, Flipkart flash sales, GST invoicing, and Service MNC (TCS/Infosys) engineering rounds.
+- :triangular_ruler: **20+ Production Mermaid Diagrams**: Request-response flows, distributed locks, database deadlock scenarios, ASGI dispatch lifecycles, and queue architectures.
+- :bulb: **Real-World Scenarios & Production Case Studies**: Concrete incident debugging (investigating 99% PostgreSQL CPU, asyncio event loop stalls, Celery OOM crashes, connection pool leaks).
+- :pencil2: **Interactive Mock Interviews**: Simulated junior, mid-level, and senior architect interview transcripts with actionable grading rubrics.
 
 ---
 
@@ -100,14 +102,15 @@ To provide unmatched depth, this repository intentionally restricts its focus to
 ```
 ├── Languages:             Python 3.10+ (CPython internals, typing, asyncio)
 ├── Backend Frameworks:    FastAPI, Django, Django REST Framework (DRF)
-├── Relational Databases:  PostgreSQL (MVCC, WAL, VACUUM), MySQL, SQLite
-├── In-Memory & Caching:   Redis (Data structures, persistence, Lua scripts)
+├── GenAI & Autonomous AI: LangGraph, RAG, Vector DBs (Qdrant/Pgvector), Tool Calling, Embeddings
+├── Relational Databases:  PostgreSQL (MVCC, WAL, VACUUM, B+Trees, Indexing), MySQL, SQLite
+├── In-Memory & Caching:   Redis (Data structures, persistence, Lua scripts, Redis GEO)
 ├── Asynchronous Queues:   Celery, RabbitMQ (AMQP, brokers, worker pools)
 ├── API Protocols:         REST, HTTP/1.1, HTTP/2, HTTP/3, WebSockets, gRPC, Protobuf
-├── DevOps & Containers:   Linux (Ubuntu), Bash, Git, GitHub Actions, Docker, Compose
+├── DevOps & Cloud:        Docker, Docker Compose, Linux, GitHub Actions, GCP (Cloud Run, GKE, Vertex AI)
 ├── Web Servers & Proxies: Nginx, Gunicorn, Uvicorn
-├── Cloud Fundamentals:    AWS (EC2, S3, IAM, ALB, CloudWatch)
-└── Software Engineering:  DSA in Python, SOLID, Design Patterns, HLD, LLD, OS, DBMS
+├── Software Engineering:  DSA in Python, SOLID, Design Patterns, HLD, LLD, OS, DBMS
+└── Practical Exercises:   LRU Cache, Ring Buffer, Rate Limiter, Mock Interviews, Production STAR Walkthroughs
 ```
 
 > **Notice:** Non-Python stacks (such as Java, JavaScript/Node, PHP, or C++) are strictly excluded to keep content focused, cohesive, and deep.
@@ -118,7 +121,7 @@ To provide unmatched depth, this repository intentionally restricts its focus to
 
 Our repository strictly follows an **honest metrics policy**. We never advertise question counts that are not physically present and programmatically verified on disk.
 
-The live status below is validated via `scripts/validate_repository.py`:
+The live status below is validated via `tools/public/validate_repository.py`:
 
 <!-- STATUS_TABLE_START -->
 
@@ -140,6 +143,23 @@ The live status below is validated via `scripts/validate_repository.py`:
 <!-- STATUS_TABLE_END -->
 
 *Progress tracking updates automatically when pull requests are validated and merged.*
+
+---
+
+## Architectural & Visual Diagram Coverage
+
+To ensure technical concepts are easily grasped, this repository embeds production-grade **Mermaid diagrams** (Architectures, Sequence flows, Data lifecycles, and ER diagrams) throughout the question banks:
+
+| Topic / Domain | Architecture Diagram | Sequence Diagram | Data Flow / Execution Lifecycle | ER Diagram | Coverage Status |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Python Core & Concurrency** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | N/A | **Complete** (600 Qs) |
+| **FastAPI Framework** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | Where applicable | **Complete** (600 Qs) |
+| **Django & ORM** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | Where applicable | **In Progress** |
+| **Databases (B+Tree & Indexing)**| :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | **Active** |
+| **Redis & Messaging** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | N/A | **Active** |
+| **DevOps & Cloud (GCP/Docker)** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | N/A | **Active** (`gcp.md`) |
+| **GenAI, RAG & Agentic AI** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | Where applicable | **Complete** (38 Qs) |
+| **Practical Coding Labs** | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | :white_check_mark: Yes | **Complete** (11 Labs) |
 
 ---
 
@@ -369,9 +389,9 @@ We welcome high-quality contributions from the open-source engineering community
 
 Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for full instructions on:
 - Forking and branch naming conventions.
-- Formatting questions according to our [10-Point Standard Format](docs/question-format.md).
+- Formatting questions according to our [Documentation Standards](docs/DOCUMENTATION_STANDARDS.md) and [Question Format Guide](docs/question-format.md).
 - Adhering to our zero-duplicate policy.
-- Running local validation tests via `scripts/validate_repository.py`.
+- Running local validation tests via `tools/public/validate_repository.py`.
 
 ---
 
@@ -379,11 +399,11 @@ Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for full instructions on:
 
 We enforce content quality and documentation health using automated workflows:
 - **Question ID Uniqueness**: No duplicate question IDs permitted.
-- **Python Code Syntax**: All embedded Python code blocks are syntax-checked via the `ast` parser.
+- **Python Code Syntax**: All embedded Python code blocks are syntax-checked via Python's `ast` parser.
 - **Link Integrity**: All relative Markdown cross-links are verified to exist.
-- **Progress Table Sync**: Live counts in this README can be refreshed automatically with:
+- **Run the Validator Locally**:
   ```bash
-  python scripts/validate_repository.py --update-readme
+  python tools/public/validate_repository.py
   ```
 
 ---

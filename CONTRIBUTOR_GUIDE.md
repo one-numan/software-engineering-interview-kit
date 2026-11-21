@@ -53,7 +53,7 @@ Concrete production architecture scenario where this concept applies.
 Actionable advice on how to structure your response during an interview.
 
 #### 9. Related Concepts
-Relative Markdown links to related files (e.g. `[Python OOP](oop.md)`).
+Relative Markdown links to related files (e.g. `[Python OOP](01-python/oop.md)`).
 
 #### 10. References
 Links to official documentation (Python docs, FastAPI docs, PEPs, RFCs).
@@ -80,8 +80,9 @@ Add or edit questions in the consolidated Markdown files under the appropriate t
 ### 4. Run the Validation Suite
 Before opening a pull request, always run the repository validation tool:
 ```bash
-py scripts/validate_repository.py --strict
+python tools/public/validate_repository.py
 ```
+For complete rules on formatting, typography, and architectural diagrams, refer to [Documentation Standards](docs/DOCUMENTATION_STANDARDS.md).
 The test suite checks:
 - Question header regex formatting and uniqueness.
 - Syntax validity of all Python code blocks using `ast.parse()`.
