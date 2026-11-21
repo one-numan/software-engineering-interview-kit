@@ -116,6 +116,11 @@ def validate_repository(repo_root: str, strict: bool = False) -> Tuple[bool, Dic
             try:
                 ast.parse(code)
             except SyntaxError as e:
+                # Tolerate modern Python syntax if running validation on older Python (e.g., 3.10)
+                if sys.version_info < (3, 11) and "except*" in code:
+                    continue
+                if sys.version_info < (3, 12) and re.search(r'^\s*type\s+\w+', code, re.MULTILINE):
+                    continue
                 # Flag if it looks like actual runnable code rather than templated pseudo-code
                 if "SyntaxError" not in code and not any(tag in code for tag in ['<your-', 'SELECT ', '...']):
                     warnings.append(f"Syntax warning in {rel_path} (code block #{i}): {e.msg} at line {e.lineno}")
