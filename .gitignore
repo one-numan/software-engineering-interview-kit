@@ -1,16 +1,19 @@
-# Byte-compiled / optimized / DLL files
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+credentials/
+
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Distribution / packaging
 .Python
-build/
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
@@ -21,41 +24,54 @@ sdist/
 var/
 wheels/
 share/python-wheels/
-*.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
 
 # Virtual Environments
-.env
-.venv
-env/
+.venv/
 venv/
+env/
 ENV/
 env.bak/
 venv.bak/
 
-# IDE and Editors
-.idea/
-.vscode/
+# Testing and Coverage
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Private local tooling
+scripts/
+private-scripts/
+local-tools/
+dev-tools/
+internal-tools/
+scratch/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.log
 *.swp
 *.swo
 *~
+
+# Build files
+build/
+dist/
+*.egg-info/
+.docusaurus/
+
+# IDE and OS
+.idea/
+.vscode/
 .DS_Store
 Thumbs.db
 
-# Testing and Coverage
-.pytest_cache/
-.coverage
-htmlcov/
-.mypy_cache/
-.ruff_cache/
-
-# Node / Web / Docs build (if any)
+# Dependencies
 node_modules/
-.docusaurus/
-
-# Temporary / Scratch
-scratch/
-tmp/
-*.tmp
